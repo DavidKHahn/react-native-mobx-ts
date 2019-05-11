@@ -1,12 +1,3 @@
-import * as React from "react";
-import { Text, View } from "react-native";
-
-const App: React.FC = () => {
-  return (
-    <View>
-      <Text>Hello from React Native Web</Text>
-    </View>
-  );
-};
+import { App } from "@app/common";
 
 export default App;

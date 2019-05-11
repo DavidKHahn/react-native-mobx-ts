@@ -2,19 +2,22 @@
   "name": "@app/common",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "rimraf dist && tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.8"
+    "react": "16.8.2",
+    "react-native": "0.59.0-rc.1",
+    "react-router-dom": "4.3.1",
+    "react-router-native": "4.3.0"
   },
   "devDependencies": {
     "@types/react-native": "0.57.53",
+    "rimraf": "^2.6.3",
     "typescript": "3.4.5"
   }
 }

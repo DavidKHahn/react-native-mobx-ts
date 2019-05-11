@@ -156,9 +156,6 @@ RCT_EXPORT_MODULE()
   if (!_devMenuItem) {
     __weak __typeof__(self) weakSelf = self;
     __weak RCTDevSettings *devSettings = self.bridge.devSettings;
-    if (devSettings.isPerfMonitorShown) {
-      [weakSelf show];
-    }
     _devMenuItem =
     [RCTDevMenuItem buttonItemWithTitleBlock:^NSString *{
       return (devSettings.isPerfMonitorShown) ?
