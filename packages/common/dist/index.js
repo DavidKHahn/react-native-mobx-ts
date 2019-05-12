@@ -17,7 +17,6 @@ exports.App = function () {
         react_1.default.createElement(react_native_1.Text, { style: styles.instructions }, count),
         react_1.default.createElement(react_native_1.Button, { title: "increment", onPress: function () { return setCount(count + 1); } })));
 };
-exports.default = exports.App;
 var styles = react_native_1.StyleSheet.create({
     container: {
         flex: 1,

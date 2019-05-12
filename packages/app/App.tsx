@@ -18,7 +18,6 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-interface Props {}
 const App = () => {
   const [count, setCount] = useState(0);
 
