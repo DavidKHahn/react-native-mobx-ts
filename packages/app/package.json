@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "react": "^16.8.2",
-    "react-native": "^0.59.0-rc.1"
+    "react-native": "^0.59.0-rc.1",
+    "wml": "0.0.83"
   },
   "devDependencies": {
     "@app/common": "1.0.0",
