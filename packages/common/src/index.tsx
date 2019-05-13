@@ -5,8 +5,10 @@ import { Router } from './Router';
 export const App = () => {
   return (
     <View style={styles.container}>
-    <Router />
+    <View style={styles.wrapper}>
+        <Router />
     </View>
+        </View>
   )
 };
 
@@ -15,6 +17,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    height: "100%"
+  },
+  wrapper: {
+      width: '100%',
+      backgroundColor: '#F5FCFF',
+      maxWidth: 425
   }
 });
