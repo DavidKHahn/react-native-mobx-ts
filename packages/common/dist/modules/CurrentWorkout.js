@@ -12,6 +12,7 @@ var React = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var RootStore_1 = require("../stores/RootStore");
 var WorkoutCard_1 = require("../ui/WorkoutCard");
+var WorkoutTimer_1 = require("../ui/WorkoutTimer");
 var styles = react_native_1.StyleSheet.create({
     container: {
         flex: 1,
@@ -21,20 +22,22 @@ var styles = react_native_1.StyleSheet.create({
 });
 exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
     var rootStore = React.useContext(RootStore_1.RootStoreContext);
-    return (React.createElement(react_native_1.View, { style: styles.container }, rootStore.workoutStore.currentExercises.map(function (e) {
-        return (React.createElement(WorkoutCard_1.WorkoutCard, { onSetPress: function (setIndex) {
-                var v = e.sets[setIndex];
-                var newValue;
-                if (v === '') {
-                    newValue = "" + e.reps;
-                }
-                else if (v === '0') {
-                    newValue = '';
-                }
-                else {
-                    newValue = "" + (parseInt(v) - 1);
-                }
-                e.sets[setIndex] = newValue;
-            }, key: e.exercise, sets: e.sets, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight }));
-    })));
+    return (React.createElement(react_native_1.View, { style: styles.container },
+        rootStore.workoutStore.currentExercises.map(function (e) {
+            return (React.createElement(WorkoutCard_1.WorkoutCard, { onSetPress: function (setIndex) {
+                    var v = e.sets[setIndex];
+                    var newValue;
+                    if (v === '') {
+                        newValue = "" + e.reps;
+                    }
+                    else if (v === '0') {
+                        newValue = '';
+                    }
+                    else {
+                        newValue = "" + (parseInt(v) - 1);
+                    }
+                    e.sets[setIndex] = newValue;
+                }, key: e.exercise, sets: e.sets, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight }));
+        }),
+        React.createElement(WorkoutTimer_1.WorkoutTimer, { onXPress: function () { } })));
 });

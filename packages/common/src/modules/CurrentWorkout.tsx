@@ -3,6 +3,7 @@ import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { RootStoreContext } from "../stores/RootStore";
 import { WorkoutCard } from "../ui/WorkoutCard";
+import { WorkoutTimer } from "../ui/WorkoutTimer";
 
 interface Props {}
 
@@ -44,6 +45,7 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
           />
         );
       })}
+      <WorkoutTimer onXPress={() => {}}/>
     </View>
   );
 });
