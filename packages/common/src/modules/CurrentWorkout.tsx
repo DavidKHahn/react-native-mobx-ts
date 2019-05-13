@@ -15,7 +15,7 @@ export const CurrentWorkout: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <WorkoutCard
-        sets={["5", "5", "5", "5", "5"]}
+        sets={["5", "5", "5", "W", "X"]}
         exercise="Squat"
         repsAndWeight="5x5 260"
       />

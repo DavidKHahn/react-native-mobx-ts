@@ -18,5 +18,5 @@ var styles = react_native_1.StyleSheet.create({
 });
 exports.CurrentWorkout = function () {
     return (React.createElement(react_native_1.View, { style: styles.container },
-        React.createElement(WorkoutCard_1.WorkoutCard, { sets: ["5", "5", "5", "5", "5"], exercise: "Squat", repsAndWeight: "5x5 260" })));
+        React.createElement(WorkoutCard_1.WorkoutCard, { sets: ["5", "5", "5", "W", "X"], exercise: "Squat", repsAndWeight: "5x5 260" })));
 };
