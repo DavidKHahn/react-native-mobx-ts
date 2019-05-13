@@ -18,7 +18,7 @@ exports.WorkoutHistory = mobx_react_lite_1.observer(function () {
         React.createElement(react_native_1.Text, null, "Workout History Page"),
         React.createElement(react_native_1.Button, { title: "Create Workout", onPress: function () {
                 rootStore.workoutStore.currentExercises.push({
-                    exercise: 'squat',
+                    exercise: 'Squat',
                     numSets: 5,
                     reps: 5,
                     sets: ["", "", "", "", ""],

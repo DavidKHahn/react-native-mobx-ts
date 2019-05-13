@@ -25,6 +25,7 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
     return (React.createElement(react_native_1.View, { style: styles.container },
         rootStore.workoutStore.currentExercises.map(function (e) {
             return (React.createElement(WorkoutCard_1.WorkoutCard, { onSetPress: function (setIndex) {
+                    rootStore.workoutTimerStore.startTimer();
                     var v = e.sets[setIndex];
                     var newValue;
                     if (v === '') {
@@ -39,5 +40,5 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
                     e.sets[setIndex] = newValue;
                 }, key: e.exercise, sets: e.sets, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight }));
         }),
-        React.createElement(WorkoutTimer_1.WorkoutTimer, { onXPress: function () { } })));
+        React.createElement(WorkoutTimer_1.WorkoutTimer, { currentTime: rootStore.workoutTimerStore.display, onXPress: function () { } })));
 });

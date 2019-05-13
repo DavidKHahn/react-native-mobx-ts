@@ -32,9 +32,9 @@ var styles = react_native_1.StyleSheet.create({
     }
 });
 exports.WorkoutTimer = function (_a) {
-    var onXPress = _a.onXPress;
+    var onXPress = _a.onXPress, currentTime = _a.currentTime;
     return (React.createElement(react_native_1.View, { style: styles.container },
-        React.createElement(react_native_1.Text, { style: styles.timeText }, "Hello"),
+        React.createElement(react_native_1.Text, { style: styles.timeText }, currentTime),
         React.createElement(react_native_1.TouchableOpacity, { onPress: onXPress },
             React.createElement(react_native_1.Text, { style: styles.x }, "x"))));
 };
