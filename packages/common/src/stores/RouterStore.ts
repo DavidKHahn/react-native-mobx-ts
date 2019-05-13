@@ -1,8 +1,10 @@
 import { observable } from 'mobx';
 import { createContext } from 'react';
 
+type Routes = 'WorkoutHistory'
+
 class RouterStore {
-   @observable path = 'WorkoutHistory';
+   @observable screen: Routes = 'WorkoutHistory';
 }
 
 export const RouterStoreContext = createContext(new RouterStore());
