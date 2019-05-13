@@ -16,7 +16,7 @@ exports.WorkoutHistory = mobx_react_lite_1.observer(function () {
     var routerStore = React.useContext(RouterStore_1.RouterStoreContext);
     return (React.createElement(react_native_1.View, null,
         React.createElement(react_native_1.Text, null, "Workout History Page"),
-        React.createElement(react_native_1.Button, { title: "create workout", onPress: function () {
+        React.createElement(react_native_1.Button, { title: "Create Workout", onPress: function () {
                 routerStore.screen = "WorkoutHistory";
             } })));
 });

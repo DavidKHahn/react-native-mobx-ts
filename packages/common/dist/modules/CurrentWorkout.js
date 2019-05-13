@@ -12,11 +12,11 @@ var react_native_1 = require("react-native");
 var WorkoutCard_1 = require("../ui/WorkoutCard");
 var styles = react_native_1.StyleSheet.create({
     container: {
-        backgroundColor: '#fafafa',
+        backgroundColor: "#fafafa",
         margin: 10
     }
 });
 exports.CurrentWorkout = function () {
     return (React.createElement(react_native_1.View, { style: styles.container },
-        React.createElement(WorkoutCard_1.WorkoutCard, null)));
+        React.createElement(WorkoutCard_1.WorkoutCard, { sets: ["5", "5", "5", "5", "5"], exercise: "Squat", repsAndWeight: "5x5 260" })));
 };

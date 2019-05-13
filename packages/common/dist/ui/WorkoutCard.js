@@ -12,14 +12,50 @@ var react_native_1 = require("react-native");
 var styles = react_native_1.StyleSheet.create({
     card: {
         borderRadius: 3,
-        backgroundColor: '#fff',
-        shadowColor: '#000',
+        backgroundColor: "#fff",
+        shadowColor: "#000",
         shadowOffSet: { width: 2, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 3,
+        flexDirection: "column",
+        padding: 10
+    },
+    topRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    topRowText: {
+        fontSize: 16
+    },
+    bottomRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        marginTop: 20,
+        marginBottom: 20
+    },
+    circle: {
+        borderRadius: 80,
+        backgroundColor: '#FFD23C',
+        padding: 20
+    },
+    circleText: {
+        color: 'black'
     }
 });
-exports.WorkoutCard = function () {
+exports.WorkoutCard = function (_a) {
+    var exercise = _a.exercise, repsAndWeight = _a.repsAndWeight, sets = _a.sets;
     return (React.createElement(react_native_1.View, { style: styles.card },
-        React.createElement(react_native_1.Text, null, "Hello Guys!")));
+        React.createElement(react_native_1.View, { style: styles.topRow },
+            React.createElement(react_native_1.Text, { style: styles.topRowText }, exercise),
+            React.createElement(react_native_1.Text, { style: styles.topRowText }, repsAndWeight)),
+        React.createElement(react_native_1.View, { style: styles.bottomRow }, sets.map(function (set, index) {
+            if (set === 'x') {
+                return React.createElement(react_native_1.Text, { key: set + index }, "x");
+            }
+            if (set === '') {
+                return React.createElement(react_native_1.Text, { key: set + index });
+            }
+            return (React.createElement(react_native_1.View, { style: styles.circle, key: set + index },
+                React.createElement(react_native_1.Text, { style: styles.circleText }, set)));
+        }))));
 };
