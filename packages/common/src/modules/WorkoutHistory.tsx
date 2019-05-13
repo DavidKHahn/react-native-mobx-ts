@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { Button, Text, View } from "react-native";
-import { RouterStoreContext } from "../stores/RouterStore";
+import { RootStoreContext } from "../stores/RootStore";
 
 interface Props {}
 
 export const WorkoutHistory: React.FC<Props> = observer(() => {
 // how to store or access router state
-  const routerStore = React.useContext(RouterStoreContext);
+  const rootStore = React.useContext(RootStoreContext);
 
   return (
     <View>
@@ -15,7 +15,7 @@ export const WorkoutHistory: React.FC<Props> = observer(() => {
       <Button
         title="Create Workout"
         onPress={() => {
-          routerStore.screen = "WorkoutHistory";
+          rootStore.routerStore.screen = "WorkoutHistory";
         }}
       />
     </View>
