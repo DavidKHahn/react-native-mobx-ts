@@ -22,6 +22,21 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
       {rootStore.workoutStore.currentExercises.map(e => {
         return (
           <WorkoutCard
+          onSetPress={setIndex => {
+              const v = e.sets[setIndex];
+
+              let newValue: string;
+
+              if (v === '') {
+                newValue = `${e.reps}`
+              } else if (v === '0') {
+                  newValue = ''
+              } else {
+                  newValue = `${parseInt(v) - 1}`
+              }
+
+              e.sets[setIndex] = newValue
+          }}
             key={e.exercise}
             sets={e.sets}
             exercise={e.exercise}
