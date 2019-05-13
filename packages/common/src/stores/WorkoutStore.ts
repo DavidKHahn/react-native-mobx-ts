@@ -1,3 +1,4 @@
+import { observable } from "mobx";
 import { RootStore } from "./RootStore";
 
 type WorkoutDay = 'a' | 'b';
@@ -25,19 +26,29 @@ interface WorkoutHistory {
 
 */
 
+interface CurrentExercise {
+    weight: number;
+    reps: number;
+    numSets: number;
+    exercise: string;
+    sets: string[];
+}
+
 export class WorkoutStore {
     rootStore: RootStore;
     constructor(rootStore: RootStore) {
        this.rootStore = rootStore;
     }
 
-    currentSquat: number;
-    currentBench: number;
-    currentOverheadPress: number;
-    currentDeadlift: number;
-    currentBarbellRow: number;
+    @observable currentSquat: number;
+    @observable currentBench: number;
+    @observable currentOverheadPress: number;
+    @observable currentDeadlift: number;
+    @observable currentBarbellRow: number;
 
-    lastWorkoutType: WorkoutDay;
+    @observable lastWorkoutType: WorkoutDay;
 
-    history: WorkoutHistory;
+    @observable currentExercises: CurrentExercise[] = []
+
+    @observable history: WorkoutHistory;
 }

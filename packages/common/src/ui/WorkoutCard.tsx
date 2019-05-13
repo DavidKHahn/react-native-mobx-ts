@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export const WorkoutCard: React.FC<Props> = ({exercise, repsAndWeight, sets}) => {
+export const WorkoutCard: React.FC<Props> = observer(({exercise, repsAndWeight, sets}) => {
   return (
     <View style={styles.card}>
         <View style={styles.topRow}>
@@ -85,4 +86,4 @@ export const WorkoutCard: React.FC<Props> = ({exercise, repsAndWeight, sets}) =>
     </View>
     </View>
   )
-};
+});

@@ -7,6 +7,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var mobx_react_lite_1 = require("mobx-react-lite");
 var React = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var styles = react_native_1.StyleSheet.create({
@@ -53,7 +54,7 @@ var styles = react_native_1.StyleSheet.create({
         color: '#655252'
     }
 });
-exports.WorkoutCard = function (_a) {
+exports.WorkoutCard = mobx_react_lite_1.observer(function (_a) {
     var exercise = _a.exercise, repsAndWeight = _a.repsAndWeight, sets = _a.sets;
     return (React.createElement(react_native_1.View, { style: styles.card },
         React.createElement(react_native_1.View, { style: styles.topRow },
@@ -70,4 +71,4 @@ exports.WorkoutCard = function (_a) {
             return (React.createElement(react_native_1.View, { style: styles.circle, key: set + index },
                 React.createElement(react_native_1.Text, { style: [styles.blackText, styles.circleText] }, set)));
         }))));
-};
+});

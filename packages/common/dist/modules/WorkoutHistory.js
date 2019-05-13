@@ -17,6 +17,25 @@ exports.WorkoutHistory = mobx_react_lite_1.observer(function () {
     return (React.createElement(react_native_1.View, null,
         React.createElement(react_native_1.Text, null, "Workout History Page"),
         React.createElement(react_native_1.Button, { title: "Create Workout", onPress: function () {
+                rootStore.workoutStore.currentExercises.push({
+                    exercise: 'squat',
+                    numSets: 5,
+                    reps: 5,
+                    sets: ["5", "5", "5", "5", "5"],
+                    weight: 260
+                }, {
+                    exercise: 'Bench Press',
+                    numSets: 5,
+                    reps: 5,
+                    sets: ["5", "5", "5", "5", "5"],
+                    weight: 200
+                }, {
+                    exercise: 'Deadlift',
+                    numSets: 1,
+                    reps: 5,
+                    sets: ["5", "x", "x", "x", "x"],
+                    weight: 360
+                });
                 rootStore.routerStore.screen = "WorkoutHistory";
             } })));
 });
