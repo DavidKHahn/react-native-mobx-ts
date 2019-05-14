@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
+import { RouteComponentProps } from "react-router";
 import { RootStoreContext } from "../stores/RootStore";
 import { WorkoutCard } from "../ui/WorkoutCard";
 import { WorkoutTimer } from "../ui/WorkoutTimer";
 
-interface Props {}
+interface Props extends RouteComponentProps{}
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export const CurrentWorkout: React.FC<Props> = observer(() => {
+export const CurrentWorkout: React.FC<Props> = observer(({ history }) => {
   const rootStore = React.useContext(RootStoreContext);
   React.useEffect(() => {
     // stops timer when unmounted
@@ -55,9 +56,18 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
           />
         );
       })}
+      <Button
+        title="SAVE"
+        onPress={() => {
+          rootStore.workoutStore.history["2019-01-12"] =
+            rootStore.workoutStore.currentExercises;
+          rootStore.workoutStore.currentExercises = [];
+          history.push('/')
+        }}
+      />
       {rootStore.workoutTimerStore.isRunning ? (
         <WorkoutTimer
-        percent={rootStore.workoutTimerStore.percent}
+          percent={rootStore.workoutTimerStore.percent}
           currentTime={rootStore.workoutTimerStore.display}
           onXPress={() => rootStore.workoutTimerStore.stopTimer()}
         />
