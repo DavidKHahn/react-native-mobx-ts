@@ -23,7 +23,7 @@ export class WorkoutStore {
     }
 
     @persist('object') @observable currentSquat: number = 45;
-    @persist @observable currentBench: number = 45;
+    @persist @observable currentBenchPress: number = 45;
     @persist @observable currentOverheadPress: number = 45;
     @persist @observable currentDeadlift: number = 65;
     @persist @observable currentBarbellRow: number = 65;
