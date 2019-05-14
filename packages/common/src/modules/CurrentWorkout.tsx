@@ -53,45 +53,45 @@ export const CurrentWorkout: React.FC<Props> = observer(
           contentContainerStyle={styles.scrollContainer}
         >
           {// pick current exercise or on a given day
-            (isCurrentWorkout
+          (isCurrentWorkout
             ? rootStore.workoutStore.currentExercises
-            : rootStore.workoutStore.history[dateKey]).map(e => {
-                return (
-                  <WorkoutCard
-                    onSetPress={setIndex => {
-                      rootStore.workoutTimerStore.startTimer();
+            : rootStore.workoutStore.history[dateKey]
+          ).map(e => {
+            return (
+              <WorkoutCard
+                onSetPress={setIndex => {
+                  rootStore.workoutTimerStore.startTimer();
 
-                      const v = e.sets[setIndex];
+                  const v = e.sets[setIndex];
 
-                      let newValue: string;
+                  let newValue: string;
 
-                      if (v === "") {
-                        newValue = `${e.reps}`;
-                      } else if (v === "0") {
-                        rootStore.workoutTimerStore.stopTimer();
-                        newValue = "";
-                      } else {
-                        newValue = `${parseInt(v) - 1}`;
-                      }
+                  if (v === "") {
+                    newValue = `${e.reps}`;
+                  } else if (v === "0") {
+                    rootStore.workoutTimerStore.stopTimer();
+                    newValue = "";
+                  } else {
+                    newValue = `${parseInt(v) - 1}`;
+                  }
 
-                      e.sets[setIndex] = newValue;
-                    }}
-                    key={e.exercise}
-                    sets={e.sets}
-                    exercise={e.exercise}
-                    repsAndWeight={`${e.numSets}x${e.reps} ${e.weight}`}
-                  />
-                );
-              })}
+                  e.sets[setIndex] = newValue;
+                }}
+                key={e.exercise}
+                sets={e.sets}
+                exercise={e.exercise}
+                repsAndWeight={`${e.numSets}x${e.reps} ${e.weight}`}
+              />
+            );
+          })}
           <Button
             title="SAVE"
             onPress={() => {
-              rootStore.workoutStore.history[
-                dayjs(
-                  new Date(+new Date() - Math.floor(Math.random() * 1000000000))
-                ).format("YYYY-MM-DD")
-              ] = rootStore.workoutStore.currentExercises;
-              rootStore.workoutStore.currentExercises = [];
+              if (isCurrentWorkout) {
+                rootStore.workoutStore.history[dayjs().format("YYYY-MM-DD")] =
+                  rootStore.workoutStore.currentExercises;
+                rootStore.workoutStore.currentExercises = [];
+              }
               history.push("/");
             }}
           />
