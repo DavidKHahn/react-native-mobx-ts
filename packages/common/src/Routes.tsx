@@ -1,7 +1,7 @@
 import React from "react";
 import { CurrentWorkout } from "./modules/CurrentWorkout";
 import { WorkoutHistory } from "./modules/WorkoutHistory";
-import { Route, Router, Switch } from "./Router";
+import { Route, Router, Switch } from "./Router/index";
 
 export const Routes = () => {
 
