@@ -31,9 +31,6 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
 
   Object.entries(rootStore.workoutStore.history).forEach(
     ([date, exercises], i) => {
-      // const hc = (
-
-      // );
       if (i % 3 === 0) {
         rows.push([
           {
@@ -49,15 +46,6 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
       }
     }
   );
-
-  /*
-  [
-        [hc, hc],
-        [hc, hc],
-        [hc, hc],
-        [hc, hc],
-  ]
-   */
 
   return (
     <View>
@@ -96,11 +84,20 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
       <FlatList
         renderItem={({ item }) => (
           <View style={styles.row}>
-          {item.map(({date, exercises}) => (
-            <View key={date} style={styles.cardContainer}>
-            <HistoryCard header={date} currentExercise={exercises} />
-          </View>
-          ))}
+            {item.map(({ date, exercises }) => (
+              <View key={date} style={styles.cardContainer}>
+                <HistoryCard
+                  onPress={() => {
+                    const parts = date.split("-");
+                    history.push(
+                      `/workout/${parts[0]}/${parts[1]}/${parts[2]}`
+                    );
+                  }}
+                  header={date}
+                  currentExercise={exercises}
+                />
+              </View>
+            ))}
             {item.length < 3 ? <View style={styles.cardContainer} /> : null}
             {item.length < 2 ? <View style={styles.cardContainer} /> : null}
           </View>

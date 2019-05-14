@@ -6,6 +6,7 @@ import { Card } from "./Card";
 interface Props {
   header: string;
   currentExercise: CurrentExercise[];
+  onPress: () => void;
 }
 
 const exerciseShortName = {
@@ -16,9 +17,9 @@ const exerciseShortName = {
   "Barbell Row": "ROW"
 };
 
-export const HistoryCard: React.FC<Props> = ({ header, currentExercise }) => {
+export const HistoryCard: React.FC<Props> = ({ header, currentExercise, onPress }) => {
   return (
-    <Card>
+    <Card onPress={onPress}>
       <Text>{header}</Text>
       {currentExercise.map(ce => {
         return (
