@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     padding: 10 // spaces out and forms cards
   },
   container: {
-    flex: 1,
+    flex: 1
   }
 });
 
@@ -88,31 +88,40 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
           item.reduce((prev, curr) => prev + " " + curr.date, "")
         }
       />
-    <Fab onPress={()=> {
-        rootStore.workoutStore.currentExercises.push(
-          {
-            exercise: "Squat",
-            numSets: 5,
-            reps: 5,
-            sets: ["", "", "", "", ""],
-            weight: 260
-          },
-          {
-            exercise: "Bench Press",
-            numSets: 5,
-            reps: 5,
-            sets: ["", "", "", "", ""],
-            weight: 200
-          },
-          {
-            exercise: "Deadlift",
-            numSets: 1,
-            reps: 5,
-            sets: ["", "x", "x", "x", "x"],
-            weight: 360
+      <Fab
+        onPress={() => {
+          if (!rootStore.workoutStore.hasCurrentWorkout) {
+            rootStore.workoutStore.currentExercises.push(
+              {
+                exercise: "Squat",
+                numSets: 5,
+                reps: 5,
+                sets: ["", "", "", "", ""],
+                weight: 260
+              },
+              {
+                exercise: "Bench Press",
+                numSets: 5,
+                reps: 5,
+                sets: ["", "", "", "", ""],
+                weight: 200
+              },
+              {
+                exercise: "Deadlift",
+                numSets: 1,
+                reps: 5,
+                sets: ["", "x", "x", "x", "x"],
+                weight: 360
+              }
+            );
           }
-        );
-    }}/>
+
+          rootStore.workoutStore.lastWorkoutType =
+            rootStore.workoutStore.lastWorkoutType === "a" ? "b" : "a";
+
+          history.push("/current-workout");
+        }}
+      />
     </View>
   );
 });
