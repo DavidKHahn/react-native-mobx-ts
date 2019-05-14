@@ -22,6 +22,13 @@ var styles = react_native_1.StyleSheet.create({
 });
 exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
     var rootStore = React.useContext(RootStore_1.RootStoreContext);
+    React.useEffect(function () {
+        // stops timer when unmounted
+        return function () {
+            rootStore.workoutTimerStore.stopTimer();
+        };
+        // brackets calls useEffect at the beginning
+    }, []);
     return (React.createElement(react_native_1.View, { style: styles.container },
         rootStore.workoutStore.currentExercises.map(function (e) {
             return (React.createElement(WorkoutCard_1.WorkoutCard, { onSetPress: function (setIndex) {
@@ -32,6 +39,7 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
                         newValue = "" + e.reps;
                     }
                     else if (v === "0") {
+                        rootStore.workoutTimerStore.stopTimer();
                         newValue = "";
                     }
                     else {
@@ -40,5 +48,5 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
                     e.sets[setIndex] = newValue;
                 }, key: e.exercise, sets: e.sets, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight }));
         }),
-        rootStore.workoutTimerStore.isRunning ? (React.createElement(WorkoutTimer_1.WorkoutTimer, { currentTime: rootStore.workoutTimerStore.display, onXPress: function () { return rootStore.workoutTimerStore.endTimer(); } })) : null));
+        rootStore.workoutTimerStore.isRunning ? (React.createElement(WorkoutTimer_1.WorkoutTimer, { percent: rootStore.workoutTimerStore.percent, currentTime: rootStore.workoutTimerStore.display, onXPress: function () { return rootStore.workoutTimerStore.stopTimer(); } })) : null));
 });

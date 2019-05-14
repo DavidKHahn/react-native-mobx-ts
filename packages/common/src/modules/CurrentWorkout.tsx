@@ -17,6 +17,13 @@ const styles = StyleSheet.create({
 
 export const CurrentWorkout: React.FC<Props> = observer(() => {
   const rootStore = React.useContext(RootStoreContext);
+  React.useEffect(() => {
+    // stops timer when unmounted
+    return () => {
+      rootStore.workoutTimerStore.stopTimer();
+    };
+    // brackets calls useEffect at the beginning
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -33,6 +40,7 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
               if (v === "") {
                 newValue = `${e.reps}`;
               } else if (v === "0") {
+                rootStore.workoutTimerStore.stopTimer();
                 newValue = "";
               } else {
                 newValue = `${parseInt(v) - 1}`;
@@ -49,8 +57,9 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
       })}
       {rootStore.workoutTimerStore.isRunning ? (
         <WorkoutTimer
+        percent={rootStore.workoutTimerStore.percent}
           currentTime={rootStore.workoutTimerStore.display}
-          onXPress={() => rootStore.workoutTimerStore.endTimer()}
+          onXPress={() => rootStore.workoutTimerStore.stopTimer()}
         />
       ) : null}
     </View>

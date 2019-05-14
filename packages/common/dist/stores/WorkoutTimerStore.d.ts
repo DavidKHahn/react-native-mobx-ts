@@ -5,6 +5,7 @@ export declare class WorkoutTimerStore {
     seconds: number;
     measure(): void;
     startTimer(): void;
-    endTimer(): void;
+    stopTimer(): void;
+    readonly percent: string;
     readonly display: string;
 }

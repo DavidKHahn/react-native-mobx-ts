@@ -39,10 +39,17 @@ var WorkoutTimerStore = /** @class */ (function () {
         this.startTime = dayjs_1.default();
         this.measure();
     };
-    WorkoutTimerStore.prototype.endTimer = function () {
+    WorkoutTimerStore.prototype.stopTimer = function () {
         this.isRunning = false;
         this.seconds = 0;
     };
+    Object.defineProperty(WorkoutTimerStore.prototype, "percent", {
+        get: function () {
+            return Math.min(100, (this.seconds / 180) * 100) + "%";
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(WorkoutTimerStore.prototype, "display", {
         // 'get' automatically calls function
         get: function () {
@@ -70,7 +77,10 @@ var WorkoutTimerStore = /** @class */ (function () {
     ], WorkoutTimerStore.prototype, "startTimer", null);
     __decorate([
         mobx_1.action
-    ], WorkoutTimerStore.prototype, "endTimer", null);
+    ], WorkoutTimerStore.prototype, "stopTimer", null);
+    __decorate([
+        mobx_1.computed
+    ], WorkoutTimerStore.prototype, "percent", null);
     __decorate([
         mobx_1.computed
     ], WorkoutTimerStore.prototype, "display", null);

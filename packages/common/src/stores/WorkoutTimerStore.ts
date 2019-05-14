@@ -29,9 +29,13 @@ export class WorkoutTimerStore {
         this.measure();
     }
 
-    @action endTimer() {
+    @action stopTimer() {
         this.isRunning = false;
         this.seconds = 0;
+    }
+
+    @computed get percent() {
+        return `${Math.min(100, (this.seconds / 180) * 100)}%`
     }
 // 'get' automatically calls function
     @computed get display() {
