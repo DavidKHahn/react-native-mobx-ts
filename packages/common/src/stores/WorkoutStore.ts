@@ -4,7 +4,7 @@ import { RootStore } from "./RootStore";
 
 type WorkoutDay = 'a' | 'b';
 
-interface CurrentExercise {
+export interface CurrentExercise {
     weight: number;
     reps: number;
     numSets: number;
