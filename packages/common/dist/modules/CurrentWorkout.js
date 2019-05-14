@@ -28,11 +28,11 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
                     rootStore.workoutTimerStore.startTimer();
                     var v = e.sets[setIndex];
                     var newValue;
-                    if (v === '') {
+                    if (v === "") {
                         newValue = "" + e.reps;
                     }
-                    else if (v === '0') {
-                        newValue = '';
+                    else if (v === "0") {
+                        newValue = "";
                     }
                     else {
                         newValue = "" + (parseInt(v) - 1);
@@ -40,5 +40,5 @@ exports.CurrentWorkout = mobx_react_lite_1.observer(function () {
                     e.sets[setIndex] = newValue;
                 }, key: e.exercise, sets: e.sets, exercise: e.exercise, repsAndWeight: e.numSets + "x" + e.reps + " " + e.weight }));
         }),
-        React.createElement(WorkoutTimer_1.WorkoutTimer, { currentTime: rootStore.workoutTimerStore.display, onXPress: function () { } })));
+        rootStore.workoutTimerStore.isRunning ? (React.createElement(WorkoutTimer_1.WorkoutTimer, { currentTime: rootStore.workoutTimerStore.display, onXPress: function () { return rootStore.workoutTimerStore.endTimer(); } })) : null));
 });

@@ -11,6 +11,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var dayjs_1 = __importDefault(require("dayjs"));
 var mobx_1 = require("mobx");
+var padZero = function (n) {
+    if (n >= 10) {
+        return n;
+    }
+    return "0" + n;
+};
 var WorkoutTimerStore = /** @class */ (function () {
     function WorkoutTimerStore() {
         this.startTime = dayjs_1.default();
@@ -35,12 +41,14 @@ var WorkoutTimerStore = /** @class */ (function () {
     };
     WorkoutTimerStore.prototype.endTimer = function () {
         this.isRunning = false;
+        this.seconds = 0;
     };
     Object.defineProperty(WorkoutTimerStore.prototype, "display", {
+        // 'get' automatically calls function
         get: function () {
             var minutes = Math.floor(this.seconds / 60);
             var seconds = this.seconds % 60;
-            return minutes + ":" + seconds;
+            return padZero(minutes) + ":" + padZero(seconds);
         },
         enumerable: true,
         configurable: true

@@ -23,23 +23,23 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
       {rootStore.workoutStore.currentExercises.map(e => {
         return (
           <WorkoutCard
-          onSetPress={setIndex => {
+            onSetPress={setIndex => {
               rootStore.workoutTimerStore.startTimer();
 
               const v = e.sets[setIndex];
 
               let newValue: string;
 
-              if (v === '') {
-                newValue = `${e.reps}`
-              } else if (v === '0') {
-                  newValue = ''
+              if (v === "") {
+                newValue = `${e.reps}`;
+              } else if (v === "0") {
+                newValue = "";
               } else {
-                  newValue = `${parseInt(v) - 1}`
+                newValue = `${parseInt(v) - 1}`;
               }
 
-              e.sets[setIndex] = newValue
-          }}
+              e.sets[setIndex] = newValue;
+            }}
             key={e.exercise}
             sets={e.sets}
             exercise={e.exercise}
@@ -47,7 +47,12 @@ export const CurrentWorkout: React.FC<Props> = observer(() => {
           />
         );
       })}
-      <WorkoutTimer currentTime={rootStore.workoutTimerStore.display} onXPress={() => {}}/>
+      {rootStore.workoutTimerStore.isRunning ? (
+        <WorkoutTimer
+          currentTime={rootStore.workoutTimerStore.display}
+          onXPress={() => rootStore.workoutTimerStore.endTimer()}
+        />
+      ) : null}
     </View>
   );
 });
