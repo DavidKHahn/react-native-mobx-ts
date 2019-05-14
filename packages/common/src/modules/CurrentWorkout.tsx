@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { Button, StyleSheet, View } from "react-native";
@@ -59,7 +60,7 @@ export const CurrentWorkout: React.FC<Props> = observer(({ history }) => {
       <Button
         title="SAVE"
         onPress={() => {
-          rootStore.workoutStore.history["2019-01-12"] =
+          rootStore.workoutStore.history[dayjs().format('YYYY-MM-DD')] =
             rootStore.workoutStore.currentExercises;
           rootStore.workoutStore.currentExercises = [];
           history.push('/')
