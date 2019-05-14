@@ -33,7 +33,10 @@ export const CurrentWorkout: React.FC<Props> = observer(({ history }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView
+      // allows tap to work correctly
+      keyboardShouldPersistTaps="always"
+      contentContainerStyle={styles.scrollContainer}>
         {rootStore.workoutStore.currentExercises.map(e => {
           return (
             <WorkoutCard
