@@ -7,7 +7,7 @@ import { RootStoreContext } from "../stores/RootStore";
 import { WorkoutCard } from "../ui/WorkoutCard";
 import { WorkoutTimer } from "../ui/WorkoutTimer";
 
-interface Props extends RouteComponentProps{}
+interface Props extends RouteComponentProps {}
 
 const styles = StyleSheet.create({
   container: {
@@ -60,10 +60,13 @@ export const CurrentWorkout: React.FC<Props> = observer(({ history }) => {
       <Button
         title="SAVE"
         onPress={() => {
-          rootStore.workoutStore.history[dayjs().format('YYYY-MM-DD')] =
-            rootStore.workoutStore.currentExercises;
+          rootStore.workoutStore.history[
+            dayjs(
+              new Date(+new Date() - Math.floor(Math.random() * 1000000000))
+            ).format("YYYY-MM-DD")
+          ] = rootStore.workoutStore.currentExercises;
           rootStore.workoutStore.currentExercises = [];
-          history.push('/')
+          history.push("/");
         }}
       />
       {rootStore.workoutTimerStore.isRunning ? (
