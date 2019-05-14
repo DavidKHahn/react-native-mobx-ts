@@ -11,7 +11,8 @@ var mobx_react_lite_1 = require("mobx-react-lite");
 var React = __importStar(require("react"));
 var react_native_1 = require("react-native");
 var RootStore_1 = require("../stores/RootStore");
-exports.WorkoutHistory = mobx_react_lite_1.observer(function () {
+exports.WorkoutHistory = mobx_react_lite_1.observer(function (_a) {
+    var history = _a.history;
     // how to store or access router state
     var rootStore = React.useContext(RootStore_1.RootStoreContext);
     return (React.createElement(react_native_1.View, null,
@@ -36,6 +37,6 @@ exports.WorkoutHistory = mobx_react_lite_1.observer(function () {
                     sets: ["", "x", "x", "x", "x"],
                     weight: 360
                 });
-                rootStore.routerStore.screen = "CurrentWorkout";
+                history.push('/current-workout');
             } })));
 });
