@@ -8,11 +8,14 @@ import { HistoryCard } from "../ui/HistoryCard";
 interface Props extends RouteComponentProps {}
 
 const styles = StyleSheet.create({
-    row: {
-        flexDirection: 'row'
-    }
-})
-
+  row: {
+    flexDirection: "row"
+  },
+  cardContainer: {
+    flex: 1, // split 50/50 across the whole container
+    padding: 10 // spaces out and forms cards
+  }
+});
 
 export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
   // how to store or access router state
@@ -21,8 +24,12 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
   const rows: JSX.Element[][] = [];
 
   Object.entries(rootStore.workoutStore.history).forEach(([date, value], i) => {
-    const hc = <HistoryCard key={date} header={date} currentExercise={value} />;
-    if (i % 2 === 0) {
+    const hc = (
+      <View key={date} style={styles.cardContainer}>
+        <HistoryCard key={date} header={date} currentExercise={value} />;
+      </View>
+    );
+    if (i % 3 === 0) {
       rows.push([hc]);
     } else {
       rows[rows.length - 1].push(hc);
@@ -71,7 +78,12 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
           history.push("/current-workout");
         }}
       />
-    {rows.map((r, i) => <View style={styles.row} key={i}>{r}</View>)}
+      {rows.map((r, i) => (
+        <View style={styles.row} key={i}>
+          {r}
+          {r.length < 3 ? <View style={styles.cardContainer} /> : null}
+        </View>
+      ))}
     </View>
   );
 });
