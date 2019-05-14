@@ -21,10 +21,10 @@ export const HistoryCard: React.FC<Props> = ({ header, currentExercise, onPress 
   return (
     <Card onPress={onPress}>
       <Text>{header}</Text>
-      {currentExercise.map(ce => {
+      {currentExercise.map((ce) => {
         return (
           <Text key={ce.exercise}>{`${
-            // typescript notation
+            // typescript notation in strict format
             exerciseShortName[ce.exercise as keyof typeof exerciseShortName]
           } ${ce.numSets}x${ce.reps} ${ce.weight}`}</Text>
         );

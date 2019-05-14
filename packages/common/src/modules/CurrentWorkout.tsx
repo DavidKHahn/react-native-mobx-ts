@@ -17,8 +17,7 @@ interface Props
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fafafa",
-    padding: 10
+    backgroundColor: "#fafafa"
   },
   scrollContainer: {
     padding: 10,
@@ -61,7 +60,6 @@ export const CurrentWorkout: React.FC<Props> = observer(
               <WorkoutCard
                 onSetPress={setIndex => {
                   rootStore.workoutTimerStore.startTimer();
-
                   const v = e.sets[setIndex];
 
                   let newValue: string;

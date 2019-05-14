@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
   // how to store or access router state
   const rootStore = React.useContext(RootStoreContext);
-  // data type -> date, exercises (2D array storing objects)
+  // Array data type -> date, exercises (2D array storing objects), easier to pass into FlatList
   const rows: Array<
     Array<{
       date: string;
@@ -53,15 +53,6 @@ export const WorkoutHistory: React.FC<Props> = observer(({ history }) => {
 
   return (
     <View style={styles.container}>
-      {/* <Text>Workout History Page</Text>
-      <Button
-        title="Create Workout"
-        onPress={() => {
-
-          history.push("/current-workout");
-        }}
-      /> */}
-
       <FlatList
         renderItem={({ item }) => (
           <View style={styles.row}>

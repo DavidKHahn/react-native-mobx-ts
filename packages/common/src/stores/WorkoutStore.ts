@@ -22,7 +22,7 @@ export class WorkoutStore {
        this.rootStore = rootStore;
     }
 
-    @persist('object') @observable currentSquat: number = 45;
+    @persist @observable currentSquat: number = 45;
     @persist @observable currentBenchPress: number = 45;
     @persist @observable currentOverheadPress: number = 45;
     @persist @observable currentDeadlift: number = 65;
@@ -33,7 +33,7 @@ export class WorkoutStore {
     @persist('list') @observable currentExercises: CurrentExercise[] = []
 
     @computed get hasCurrentWorkout() {
-        // if it's 0 then false larger than 0 equals true
+        // if 0 then false else if arger than 0 equals true
         return !!this.currentExercises.length;
     }
 

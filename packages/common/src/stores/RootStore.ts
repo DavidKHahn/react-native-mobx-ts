@@ -7,7 +7,7 @@ import { WorkoutTimerStore } from "./WorkoutTimerStore";
 const hydrate = create({
     storage: AsyncStorage,
     jsonify: true // set true is using AsyncStorage
-})
+});
 
 export class RootStore {
     // this -> to access stores

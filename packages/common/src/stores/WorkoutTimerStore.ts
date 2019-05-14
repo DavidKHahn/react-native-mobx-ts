@@ -4,14 +4,14 @@ import { persist } from "mobx-persist";
 
 const padZero = (n: number) => {
     if (n >= 10) {
-        return n
+        return n;
     }
 
     return `0${n}`;
 }
 
 export class WorkoutTimerStore {
-    @persist @observable startTime = dayjs();
+    @persist("object") @observable startTime = dayjs();
     @persist @observable isRunning = false;
     @persist @observable seconds = 0;
 
@@ -24,7 +24,6 @@ export class WorkoutTimerStore {
     }
     // action changes some of the variables or fields in store
     @action startTimer() {
-        if (this.isRunning) return;
         this.isRunning = true;
         this.startTime = dayjs();
         this.measure();
@@ -36,12 +35,12 @@ export class WorkoutTimerStore {
     }
 
     @computed get percent() {
-        return `${Math.min(100, (this.seconds / 180) * 100)}%`
+        return `${Math.min(100, (this.seconds / 180) * 100)}%`;
     }
-// 'get' automatically calls function
+    // 'get' automatically calls function without having to input () in fields
     @computed get display() {
-        const minutes = Math.floor(this.seconds/60)
-        const seconds = this.seconds % 60
-        return `${padZero(minutes)}:${padZero(seconds)}`
+        const minutes = Math.floor(this.seconds / 60);
+        const seconds = this.seconds % 60;
+        return `${padZero(minutes)}:${padZero(seconds)}`;
     }
 }
