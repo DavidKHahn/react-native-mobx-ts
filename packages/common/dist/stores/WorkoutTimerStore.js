@@ -34,8 +34,6 @@ var WorkoutTimerStore = /** @class */ (function () {
     };
     // action changes some of the variables or fields in store
     WorkoutTimerStore.prototype.startTimer = function () {
-        if (this.isRunning)
-            return;
         this.isRunning = true;
         this.startTime = dayjs_1.default();
         this.measure();
@@ -52,7 +50,7 @@ var WorkoutTimerStore = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(WorkoutTimerStore.prototype, "display", {
-        // 'get' automatically calls function
+        // 'get' automatically calls function without having to input () in fields
         get: function () {
             var minutes = Math.floor(this.seconds / 60);
             var seconds = this.seconds % 60;
@@ -62,7 +60,7 @@ var WorkoutTimerStore = /** @class */ (function () {
         configurable: true
     });
     __decorate([
-        mobx_persist_1.persist, mobx_1.observable
+        mobx_persist_1.persist("object"), mobx_1.observable
     ], WorkoutTimerStore.prototype, "startTime", void 0);
     __decorate([
         mobx_persist_1.persist, mobx_1.observable

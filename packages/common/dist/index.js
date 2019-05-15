@@ -14,14 +14,14 @@ exports.App = function () {
 var styles = react_native_1.StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         height: "100%"
     },
     wrapper: {
         flex: 1,
-        width: '100%',
-        backgroundColor: '#F5FCFF',
+        width: "100%",
+        backgroundColor: "#F5FCFF",
         maxWidth: 425
     }
 });
